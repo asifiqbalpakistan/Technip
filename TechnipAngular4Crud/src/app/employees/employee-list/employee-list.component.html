@@ -1,0 +1,24 @@
+<table class="table table-sm table-hover">
+    <tr>
+        <th>Employee Name</th>
+        <th>Employee Department</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+      </tr>
+  <tr *ngFor="let employee of employeeService.employeeList">
+     
+    <td>{{employee.EmployeeName}}</td>
+    <td>{{employee.EmployeeDept}}</td>
+    <td>{{employee.Status}}</td>
+    <td>
+      <a class="btn">
+        <i class="fa fa-pencil-square-o" (click)="OnEditShowEmployee(employee)"></i>
+      </a>
+  
+        <a class="btn">
+          <i class="fa fa-trash-o" (click)="OnDeleteEmployee(employee.EmployeeID)"></i>
+        </a>
+      </td>
+  </tr>
+</table>

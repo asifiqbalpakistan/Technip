@@ -1,0 +1,53 @@
+<form class="emp-Form" #employeeForm="ngForm" (ngSubmit)="OnSubmit(employeeForm)">
+  <input type="hidden" name="EmployeeID" #EmployeeID="ngModel" [(ngModel)]="employeeService.selectedEmployee.EmployeeID">
+  <div class="form-row">
+      <div class="form-group col-md-6"> 
+          Employee Name
+      </div>
+    <div class="form-group col-md-6"> 
+     
+      <input class="form-control"  name="EmployeeName" #EmployeeName="ngModel" [(ngModel)]="employeeService.selectedEmployee.EmployeeName" required> 
+      <div class="validation-error" *ngIf="EmployeeName.invalid && EmployeeName.touched">Employee Name is Empty</div>
+    </div>
+   
+   
+  </div>
+  <div class="form-row">
+      <div class="form-group col-md-6"> 
+          Employee Department
+      </div>
+      <div class="form-group col-md-6">
+  
+          <input class="form-control"  name="EmployeeDept" #EmployeeDept="ngModel" [(ngModel)]="employeeService.selectedEmployee.EmployeeDept" required>
+          <div class="validation-error" *ngIf="EmployeeDept.invalid && EmployeeDept.touched">Employee Department is Empty</div>
+      </div>
+
+  </div>
+  <div class="form-row">
+
+     <div class="form-group col-md-6">
+        <label>Employee Status</label>
+     </div>
+      <div class="form-group col-md-6">
+        
+          <select class="form-control"  name="Status" #Status="ngModel" required
+          [(ngModel)]="employeeService.selectedEmployee.Status" 
+          >
+      <option value="Active">Active</option>
+      <option value="InActive" >InActive</option>
+      
+  </select>
+  <div class="validation-error" *ngIf="Status.invalid && Status.touched">Status is Empty</div>
+
+    </div>
+  </div>
+  <div class="form-row" style="margin-top: 3%;">
+      <div class="form-group col-md-8">
+        <button [disabled]="!employeeForm.valid"    type="submit" class="btn btn-sm btn-block bg-info " >Submit</button>
+   </div>
+   <div class="form-group col-md-4">
+      <button type="submit"  class="btn btn-sm btn-block bg-secondary" (click)="reset(employeeForm)" >Reset</button>
+ </div>
+  </div>
+
+</form>
